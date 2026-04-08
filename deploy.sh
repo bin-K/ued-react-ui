@@ -4,9 +4,11 @@
 # set -e
 
 # 构建
-pnpm run docs:build
-# 进入待发布的目录
-cd doc_build
+if [ "${PWD#/www/wwwroot}" = "$PWD" ]; then
+    pnpm run docs:build
+    # 进入待发布的目录
+    cd doc_build
+fi
 git init
 git remote add origin git@github.com:bin-K/ued-react-ui.git
 git add -A
